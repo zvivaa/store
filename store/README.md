@@ -3,9 +3,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 Create .env 
-
-First, run the development server:
-
 ```
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=YOUR_KEY
 CLERK_SECRET_KEY=YOUR_KEY
@@ -21,7 +18,7 @@ DATABASE_URL=YOUR_LINK
 
 DIRECT_URL=YOUR_LINK
 ```
-
+Run the development server:
 ```bash
 npm run dev
 # or
