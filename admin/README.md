@@ -1,9 +1,23 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+Create .env 
+```
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=YOUR_KEY
+CLERK_SECRET_KEY=YOUR_KEY
 
-First, run the development server:
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
 
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=YOUR_CLOUDINARY_BASE_NAME
+
+DATABASE_URL=YOUR_LINK
+
+DIRECT_URL=YOUR_LINK
+```
+Run the development server:
 ```bash
 npm run dev
 # or
