@@ -30,7 +30,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id)
-    toast.success('ID Доски скопирован в буфер обмена')
+    toast.success('ID категории скопирован в буфер обмена')
   }
 
   const onDelete = async () => {
