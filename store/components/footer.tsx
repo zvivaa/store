@@ -1,9 +1,9 @@
 const Footer = () => {
   return (
-    <footer className="bg-white border-t">
+    <footer className="bg-white border-t mt-10">
       <div className="mx-auto py-10">
-        <p className="text-center text-xs text-black">
-          &copy; 2023 FakeStoreName, inc. All rights reserved.
+        <p className="text-left lg:px-8 sm:px-6 text-xs text-black">
+          &copy; 2023 ООО "АЛВЕНТ"
         </p>
       </div>
     </footer>
