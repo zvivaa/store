@@ -31,6 +31,12 @@ const ProductsPage = async ({ params }: { params: { storeId: string } }) => {
     category: item.category.name,
     brand: item.brand.name,
     spec: item.spec.value,
+    square: item.square,
+    power: item.power,
+    wifi: item.wifi,
+    maxTemp: item.maxTemp,
+    minTemp: item.minTemp,
+    noise: item.noise,
     createdAt: format(item.createdAt, 'MMMM do, yyyy'),
   }))
 

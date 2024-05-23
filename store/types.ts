@@ -18,6 +18,12 @@ export interface Product {
   isFeatured: boolean
   brand: Brand
   spec: Spec
+  square: string
+  power: string
+  wifi: string
+  maxTemp: string
+  minTemp: string
+  noise: string
   images: Image[]
 }
 

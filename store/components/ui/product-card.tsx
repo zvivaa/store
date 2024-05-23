@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { Expand, ShoppingCart } from 'lucide-react'
+import { Expand, Heart, ShoppingCart } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { MouseEventHandler } from 'react'
 
@@ -10,6 +10,7 @@ import IconButton from '@/components/ui/icon-button'
 import Currency from '@/components/ui/currency'
 import usePreviewModal from '@/hooks/use-preview-model'
 import useCart from '@/hooks/use-cart'
+import useFavorite from '@/hooks/use-favorite'
 
 interface ProductCard {
   data: Product
@@ -18,6 +19,7 @@ interface ProductCard {
 const ProductCard: React.FC<ProductCard> = ({ data }) => {
   const previewModal = usePreviewModal()
   const cart = useCart()
+  const favorite = useFavorite()
   const router = useRouter()
   const handleClick = () => {
     router.push(`/product/${data?.id}`)
@@ -33,6 +35,12 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
     event.stopPropagation()
 
     cart.addItem(data)
+  }
+
+  const onAddToFavroite: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation()
+
+    favorite.addItem(data)
   }
 
   return (
@@ -56,6 +64,10 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
             <IconButton
               onClick={onAddToCart}
               icon={<ShoppingCart size={20} className="text-gray-600" />}
+            />
+            <IconButton
+              onClick={onAddToFavroite}
+              icon={<Heart size={20} className="text-gray-600" />}
             />
           </div>
         </div>

@@ -11,6 +11,12 @@ export type ProductColumn = {
   size: string
   category: string
   spec: string
+  square: string
+  power: string
+  wifi: string
+  maxTemp: string
+  minTemp: string
+  noise: string
   brand: string
   isFeatured: boolean
   isArchived: boolean
@@ -41,6 +47,30 @@ export const columns: ColumnDef<ProductColumn>[] = [
   {
     accessorKey: 'spec',
     header: 'Характеристика',
+  },
+  {
+    accessorKey: 'square',
+    header: 'Макс. площадь помещения м²',
+  },
+  {
+    accessorKey: 'power',
+    header: 'Мощность кВт',
+  },
+  {
+    accessorKey: 'wifi',
+    header: 'WI-FI Управление',
+  },
+  {
+    accessorKey: 'maxTemp',
+    header: 'Макс. температура',
+  },
+  {
+    accessorKey: 'minTemp',
+    header: 'Мин. температура',
+  },
+  {
+    accessorKey: 'noise',
+    header: 'Уровень шума',
   },
   {
     accessorKey: 'brand',
