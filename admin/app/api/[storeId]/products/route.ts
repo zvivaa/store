@@ -23,6 +23,12 @@ export async function POST(
       categoryId,
       brandId,
       specId,
+      square,
+      power,
+      wifi,
+      maxTemp,
+      minTemp,
+      noise,
       images,
       isFeatured,
       isArchived,
@@ -50,6 +56,30 @@ export async function POST(
 
     if (!specId) {
       return new NextResponse('Specials ID is required', { status: 400 })
+    }
+
+    if (!square) {
+      return new NextResponse('Square is required', { status: 400 })
+    }
+
+    if (!power) {
+      return new NextResponse('Power is required', { status: 400 })
+    }
+
+    if (!wifi) {
+      return new NextResponse('Wifi is required', { status: 400 })
+    }
+
+    if (!maxTemp) {
+      return new NextResponse('Max Temp is required', { status: 400 })
+    }
+
+    if (!minTemp) {
+      return new NextResponse('Min Temp is required', { status: 400 })
+    }
+
+    if (!noise) {
+      return new NextResponse('Noise is required', { status: 400 })
     }
 
     if (!images || !images.length) {
@@ -80,6 +110,12 @@ export async function POST(
         categoryId,
         brandId,
         specId,
+        square,
+        power,
+        wifi,
+        maxTemp,
+        minTemp,
+        noise,
         storeId: params.storeId,
         images: {
           createMany: {

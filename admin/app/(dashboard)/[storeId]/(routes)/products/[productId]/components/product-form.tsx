@@ -41,6 +41,12 @@ const formSchema = z.object({
   categoryId: z.string().min(1),
   brandId: z.string().min(1),
   specId: z.string().min(1),
+  square: z.string().min(1),
+  power: z.string().min(1),
+  wifi: z.string().min(1),
+  maxTemp: z.string().min(1),
+  minTemp: z.string().min(1),
+  noise: z.string().min(1),
   isFeatured: z.boolean().default(false).optional(),
   isArchived: z.boolean().default(false).optional(),
 })
@@ -90,6 +96,12 @@ export const ProductForm: React.FC<ProductFormProps> = ({
           categoryId: '',
           brandId: '',
           specId: '',
+          square: '',
+          power: '',
+          wifi: '',
+          maxTemp: '',
+          minTemp: '',
+          noise: '',
           isFeatured: false,
           isArchived: false,
         },
@@ -310,6 +322,114 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                       ))}
                     </SelectContent>
                   </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="square"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Площадь помещения</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="number"
+                      disabled={loading}
+                      placeholder="0"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="power"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Мощность к кВт</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="number"
+                      disabled={loading}
+                      placeholder="0"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="wifi"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Wi-Fi модуль</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      disabled={loading}
+                      placeholder="Да/Нет"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="maxTemp"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Максимальная температура</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="number"
+                      disabled={loading}
+                      placeholder="+"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="minTemp"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Минимальная температура</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="number"
+                      disabled={loading}
+                      placeholder="-"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="noise"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Уровень шума</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="number"
+                      disabled={loading}
+                      placeholder="Шум в ДБ"
+                      {...field}
+                    />
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}

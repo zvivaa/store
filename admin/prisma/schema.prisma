@@ -97,6 +97,12 @@ model Product {
   brand   Brand         @relation(fields: [brandId], references: [id])
   specId  String
   spec    Spec          @relation(fields: [specId], references: [id])
+  square  String
+  power String
+  wifi String
+  maxTemp String
+  minTemp String
+  noise String
   images Image[]
   orderItems OrderItem[]
   createdAt DateTime    @default(now())
