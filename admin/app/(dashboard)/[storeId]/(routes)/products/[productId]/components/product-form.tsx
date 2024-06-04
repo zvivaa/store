@@ -1,7 +1,7 @@
 'use client'
 
 import { z } from 'zod'
-import { Brand, Category, Image, Product, Spec } from '@prisma/client'
+import { Brand, Category, Image, Product, Spec, Square } from '@prisma/client'
 import { Trash } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
@@ -41,7 +41,7 @@ const formSchema = z.object({
   categoryId: z.string().min(1),
   brandId: z.string().min(1),
   specId: z.string().min(1),
-  square: z.string().min(1),
+  squareId: z.string().min(1),
   power: z.string().min(1),
   wifi: z.string().min(1),
   maxTemp: z.string().min(1),
@@ -62,12 +62,14 @@ interface ProductFormProps {
   categories: Category[]
   brands: Brand[]
   specs: Spec[]
+  square: Square[]
 }
 export const ProductForm: React.FC<ProductFormProps> = ({
   initialData,
   categories,
   brands,
   specs,
+  square,
 }) => {
   const params = useParams()
   const router = useRouter()
@@ -96,7 +98,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
           categoryId: '',
           brandId: '',
           specId: '',
-          square: '',
+          squareId: '',
           power: '',
           wifi: '',
           maxTemp: '',
@@ -328,18 +330,32 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="square"
+              name="squareId"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Площадь помещения</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      disabled={loading}
-                      placeholder="0"
-                      {...field}
-                    />
-                  </FormControl>
+                  <Select
+                    disabled={loading}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue
+                          defaultValue={field.value}
+                          placeholder="Выберите площадь"
+                        />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {square.map((square) => (
+                        <SelectItem key={square.id} value={square.id}>
+                          {square.name} - {square.value}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <FormMessage />
                 </FormItem>
               )}

@@ -27,6 +27,12 @@ const ProductPage = async ({
     },
   })
 
+  const square = await prismadb.square.findMany({
+    where: {
+      storeId: params.storeId,
+    },
+  })
+
   const specs = await prismadb.spec.findMany({
     where: {
       storeId: params.storeId,
@@ -40,6 +46,7 @@ const ProductPage = async ({
           categories={categories}
           brands={brands}
           specs={specs}
+          square={square}
           initialData={product}
         />
       </div>

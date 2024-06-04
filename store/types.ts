@@ -18,7 +18,7 @@ export interface Product {
   isFeatured: boolean
   brand: Brand
   spec: Spec
-  square: string
+  square: Square
   power: string
   wifi: string
   maxTemp: string
@@ -33,6 +33,12 @@ export interface Image {
 }
 
 export interface Brand {
+  id: string
+  name: string
+  value: string
+}
+
+export interface Square {
   id: string
   name: string
   value: string

@@ -1,8 +1,8 @@
 'use client'
 
 import qs from 'query-string'
-
 import { useRouter, useSearchParams } from 'next/navigation'
+import { useState } from 'react'
 
 import { Brand, Spec } from '@/types'
 import Button from '@/components/ui/button'
@@ -17,6 +17,7 @@ interface FilterProps {
 const Filter: React.FC<FilterProps> = ({ data, name, valueKey }) => {
   const searchParams = useSearchParams()
   const router = useRouter()
+  const [inputValue, setInputValue] = useState(searchParams.get(valueKey) || '')
 
   const selectedValue = searchParams.get(valueKey)
 
@@ -43,25 +44,38 @@ const Filter: React.FC<FilterProps> = ({ data, name, valueKey }) => {
     router.push(url)
   }
 
+  const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value
+    setInputValue(value)
+
+    const current = qs.parse(searchParams.toString())
+    const query = {
+      ...current,
+      [valueKey]: value,
+    }
+
+    const url = qs.stringifyUrl(
+      {
+        url: window.location.href,
+        query,
+      },
+      { skipNull: true }
+    )
+
+    router.push(url)
+  }
+
   return (
     <div className="mb-8">
       <h3 className="text-lg font-semibold">{name}</h3>
-      <hr className="my-4" />
-      <div className="flex flex-wrap gap-2 flex-col">
-        {data.map((filter) => (
-          <div key={filter.id} className="flex items-center">
-            <Button
-              className={cn(
-                'rounded-md text-sm text-gray-800 p-2 bg-white border border-gray-300',
-                selectedValue === filter.id && 'bg-black text-white'
-              )}
-              onClick={() => onClick(filter.id)}
-            >
-              {filter.name}
-            </Button>
-          </div>
-        ))}
-      </div>
+
+      <input
+        type="text"
+        value={inputValue}
+        onChange={onInputChange}
+        placeholder={`${name}`}
+        className="mt-4 p-2 border rounded-md w-full"
+      />
     </div>
   )
 }

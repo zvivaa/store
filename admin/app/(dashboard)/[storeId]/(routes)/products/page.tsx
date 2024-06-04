@@ -16,6 +16,7 @@ const ProductsPage = async ({ params }: { params: { storeId: string } }) => {
       category: true,
       brand: true,
       spec: true,
+      square: true,
     },
     orderBy: {
       createdAt: 'desc',
@@ -31,7 +32,7 @@ const ProductsPage = async ({ params }: { params: { storeId: string } }) => {
     category: item.category.name,
     brand: item.brand.name,
     spec: item.spec.value,
-    square: item.square,
+    square: item.square.name,
     power: item.power,
     wifi: item.wifi,
     maxTemp: item.maxTemp,
