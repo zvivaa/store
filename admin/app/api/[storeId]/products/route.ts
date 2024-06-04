@@ -23,7 +23,7 @@ export async function POST(
       categoryId,
       brandId,
       specId,
-      square,
+      squareId,
       power,
       wifi,
       maxTemp,
@@ -58,7 +58,7 @@ export async function POST(
       return new NextResponse('Specials ID is required', { status: 400 })
     }
 
-    if (!square) {
+    if (!squareId) {
       return new NextResponse('Square is required', { status: 400 })
     }
 
@@ -110,7 +110,7 @@ export async function POST(
         categoryId,
         brandId,
         specId,
-        square,
+        squareId,
         power,
         wifi,
         maxTemp,

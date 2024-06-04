@@ -25,6 +25,7 @@ model Store {
   specs      Spec[]       @relation("StoreToSpec") 
   products   Product[]    @relation("StoreToProduct")
   orders     Order[]      @relation("StoreToOrder")
+  square     Square[]     @relation("StoreToSquare")
   createdAt  DateTime     @default(now())
   updatedAt  DateTime     @updatedAt
 }
@@ -83,6 +84,19 @@ model Spec {
   @@index([storeId])
 }
 
+model Square {
+  id       String     @id  @default(uuid())
+  storeId  String
+  store    Store      @relation("StoreToSquare", fields: [storeId], references: [id])
+  name     String
+  value    String
+  products Product[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([storeId])
+}
+
 model Product {
   id        String      @id    @default(uuid())
   storeId   String
@@ -97,7 +111,8 @@ model Product {
   brand   Brand         @relation(fields: [brandId], references: [id])
   specId  String
   spec    Spec          @relation(fields: [specId], references: [id])
-  square  String
+  squareId String
+  square  Square        @relation(fields: [squareId], references: [id])
   power String
   wifi String
   maxTemp String
@@ -112,6 +127,7 @@ model Product {
    @@index([categoryId])
    @@index([brandId])
    @@index([specId])
+   @@index([squareId])
 }
 
 model Image {

@@ -1,8 +1,9 @@
+// pages/category/[categoryId]/page.tsx
+
 import getBrends from '@/actions/get-brends'
 import getCategory from '@/actions/get-category'
-import getProducts from '@/actions/get-products'
+import getCalculate from '@/actions/get-calculate'
 import getSpecs from '@/actions/get-specs'
-import getSquare from '@/actions/get-square'
 import Billboard from '@/components/billboard'
 import Container from '@/components/ui/container'
 import NoResults from '@/components/ui/no-results'
@@ -18,9 +19,12 @@ interface CategoryPageProps {
     categoryId: string
   }
   searchParams: {
-    brendId: string
-    specId: string
-    squareId: string
+    square?: string
+    power?: string
+    wifi?: string
+    noise?: string
+    minTemp?: string
+    maxTemp?: string
   }
 }
 
@@ -28,28 +32,35 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   params,
   searchParams,
 }) => {
-  const products = await getProducts({
-    categoryId: params.categoryId,
-    brandId: searchParams.brendId,
-    specId: searchParams.specId,
-    squareId: searchParams.squareId,
+  const products = await getCalculate({
+    square: searchParams.square,
+    power: searchParams.power,
+    wifi: searchParams.wifi,
+    noise: searchParams.noise,
+    minTemp: searchParams.minTemp,
+    maxTemp: searchParams.maxTemp,
   })
   const brands = await getBrends()
   const specs = await getSpecs()
-  const square = await getSquare()
   const category = await getCategory(params.categoryId)
 
   return (
     <div className="bg-white">
       <Container>
-        <Billboard data={category.billboard} />
-        <div className="px-4 sm:px-6 lg:px-8 pb-24">
-          <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
+        <div className="px-4 py-16 sm:px-6 lg:px-8">
+          <h1 className="text-3xl font-bold text-black">Калькулятор</h1>
+          <div className="mt-12 lg:grid lg:grid-cols-5 lg:gap-x-8">
             <MobileFilters brands={brands} specs={specs} />
-            <div className="hidden lg:block flex">
-              <Filter valueKey="brendId" name="Бренд" data={brands} />
-              <Filter valueKey="specId" name="Цена" data={specs} />
-              <Filter valueKey="squareId" name="Площадь" data={square} />
+            <div className="hidden lg:block">
+              <Filter valueKey="square" name="Площадь (м2)" data={specs} />
+              <Filter valueKey="power" name="Мощность (кВт)" data={specs} />
+              <Filter valueKey="noise" name="Уровень шума (дБ)" data={specs} />
+              <Filter valueKey="minTemp" name="Мин. температура" data={specs} />
+              <Filter
+                valueKey="maxTemp"
+                name="Макс. температура"
+                data={specs}
+              />
             </div>
             <div className="mt-6 lg:col-span-4 lg:mt-0">
               {products.length === 0 && <NoResults />}

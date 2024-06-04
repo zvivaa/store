@@ -43,12 +43,8 @@ const Info: React.FC<InfoProps> = ({ data }) => {
           <div>{data?.brand?.name}</div>
         </div>
         <div className="flex items-center gap-x-4">
-          <h3 className="font-semibold text-black">Мощность:</h3>
-          <div>{data?.spec?.value}</div>
-        </div>
-        <div className="flex items-center gap-x-4">
           <h3 className="font-semibold text-black">Рек. площадь помещения:</h3>
-          <div>{data?.square} (м2)</div>
+          <div>{data.square?.name} (м2)</div>
         </div>
         <div className="flex items-center gap-x-4">
           <h3 className="font-semibold text-black">WI-FI Модуль:</h3>
@@ -60,7 +56,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
         </div>
         <div className="flex items-center gap-x-4">
           <h3 className="font-semibold text-black">Мин. температура:</h3>
-          <div>{data?.minTemp} °С</div>
+          <div>-{data?.minTemp} °С</div>
         </div>
         <div className="flex items-center gap-x-4">
           <h3 className="font-semibold text-black">Уровень шума:</h3>

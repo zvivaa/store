@@ -35,8 +35,13 @@ export function MainNav({
     },
     {
       href: `/${params.storeId}/specs`,
-      label: 'Характеристики',
+      label: 'Цены',
       active: pathname === `/${params.storeId}/specs`,
+    },
+    {
+      href: `/${params.storeId}/square`,
+      label: 'Площадь (м2)',
+      active: pathname === `/${params.storeId}/square`,
     },
     {
       href: `/${params.storeId}/products`,
