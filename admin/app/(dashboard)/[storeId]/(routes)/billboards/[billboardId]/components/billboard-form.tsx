@@ -48,7 +48,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
   const description = initialData
     ? 'Редактировать доску'
     : 'Добавить новую доску'
-  const toastMessage = initialData ? 'Доска обновлена' : 'Доска созданна'
+  const toastMessage = initialData ? 'Доска обновлена' : 'Доска создана'
   const action = initialData ? 'Сохранить изменения' : 'Создать'
 
   const form = useForm<BillboardFormValues>({

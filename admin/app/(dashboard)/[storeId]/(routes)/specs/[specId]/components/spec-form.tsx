@@ -49,7 +49,7 @@ export const SpecForm: React.FC<SpecFormProps> = ({ initialData }) => {
     : 'Добавить новую характеристику'
   const toastMessage = initialData
     ? 'Характеристика обновлена'
-    : 'Характеристика созданна'
+    : 'Характеристика создана'
   const action = initialData ? 'Сохранить изменения' : 'Создать'
 
   const form = useForm<SpecFormValues>({
