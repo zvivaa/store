@@ -35,7 +35,7 @@ export function MainNav({
     },
     {
       href: `/${params.storeId}/specs`,
-      label: 'Цены',
+      label: 'Тип',
       active: pathname === `/${params.storeId}/specs`,
     },
     {

@@ -1,0 +1,41 @@
+/* components/BrandsSlider.module.css */
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 1700px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.sliderWrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.slide {
+  min-width: calc(100% / 4.3); /* Show 3 slides at a time + 2 buffer slides */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.navButton {
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1;
+}

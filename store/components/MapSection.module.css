@@ -1,0 +1,17 @@
+/* components/MapSection.module.css */
+.mapContainer {
+  margin: 40px 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.mapTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.map {
+  width: 50%;
+  height: 400px;
+}
