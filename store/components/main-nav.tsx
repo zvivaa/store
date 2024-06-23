@@ -34,7 +34,7 @@ const MainNav: React.FC<MainNavProps> = ({ data }) => {
         </Button>
       </div>
       {visible && (
-        <div className="absolute w-[30%] h-[500px] py-4 sm:px-6 lg:px-8 mt-6 ml-[-223px] bg-gray-800 z-10 mx-6 grid grid-rows-11 grid-cols-2">
+        <div className="absolute w-[20%] h-[500px] py-4 sm:px-6 lg:px-8 mt-6 ml-[-223px] bg-gray-800 z-10 mx-6 grid grid-rows-11">
           {routes.map((route) => (
             <Link
               onClick={toggle}

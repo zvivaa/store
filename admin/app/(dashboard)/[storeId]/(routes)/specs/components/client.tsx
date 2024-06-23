@@ -23,8 +23,8 @@ export const SpecClient: React.FC<SpecClientProps> = ({ data }) => {
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title={`Характеристики (${data.length})`}
-          description="Управление характеристиками для магазина"
+          title={`Тип (${data.length})`}
+          description="Управление типами для магазина"
         />
         <Button onClick={() => router.push(`/${params.storeId}/specs/new`)}>
           <Plus className="mr-2 h-4 w-4" />
